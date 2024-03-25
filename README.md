@@ -1,84 +1,41 @@
 # Crowdfunding_ETL
-For the ETL mini project, you will work with a partner to practice building an ETL pipeline using Python, Pandas, and either Python dictionary methods or regular expressions to extract and transform the data. After you transform the data, you'll create four CSV files and use the CSV file data to create an ERD and a table schema. Finally, you’ll upload the CSV file data into a Postgres database.
 
-# Instructions
-The instructions for this mini project are divided into the following subsections:
+The Crowdfunding ETL Mini Project focuses on developing an Extract, Transform, Load (ETL) pipeline using Python and Pandas, aimed at streamlining the process of converting crowdfunding data into a structured format suitable for database storage and analysis. This comprehensive project encompasses several critical stages, starting from data extraction from Excel files, data transformation including cleaning and formatting, and finally, loading the transformed data into CSV files for database integration.
 
-# Create the Category and Subcategory DataFrames
-Create the Campaign DataFrame
-Create the Contacts DataFrame
-Create the Crowdfunding Database
-Create the Category and Subcategory DataFrames
-Extract and transform the crowdfunding.xlsx Excel data to create a category DataFrame that has the following columns:
+Key Components of the Project:
 
-A "category_id" column that has entries going sequentially from "cat1" to "catn", where n is the number of unique categories
+Data Extraction: The project begins with extracting crowdfunding data from crowdfunding.xlsx and contact information from contacts.xlsx, using Pandas to read the data into DataFrames.
 
-A "category" column that contains only the category titles
+Data Transformation:
 
-Export the category DataFrame as category.csv and save it to your GitHub repository.
+Creation of Category and Subcategory DataFrames involves splitting the combined 'category & sub-category' column into distinct 'category' and 'subcategory' columns, assigning unique sequential identifiers to each category and subcategory, and exporting these to CSV files.
 
-# Extract and transform the crowdfunding.xlsx Excel data to create a subcategory DataFrame that has the following columns:
+The Campaign DataFrame transformation includes renaming columns, converting data types for numerical values, adjusting date formats for 'launched_at' and 'deadline' columns, and aligning 'category_id' and 'subcategory_id' with those in the Category and Subcategory DataFrames.
 
-A "subcategory_id" column that has entries going sequentially from "subcat1" to "subcatn", where n is the number of unique subcategories
+For Contacts DataFrame, the project provides options to use either Python dictionary methods or regular expressions to parse and structure contact information, creating columns for 'contact_id', 'first_name', 'last_name', and 'email'.
+Data Loading: The transformed data is then loaded into four CSV files: category.csv, subcategory.csv, campaign.csv, and contacts.csv.
 
-A "subcategory" column that contains only the subcategory titles
-Export the subcategory DataFrame as subcategory.csv and save it to your GitHub repository.
+Database Integration:
 
-# Create the Campaign DataFrame
-Extract and transform the crowdfunding.xlsx Excel data to create a campaign DataFrame has the following columns:
+An Entity-Relationship Diagram (ERD) is sketched to visualize the database schema, illustrating the relationships between the tables based on the structured CSV files.
 
-The "cf_id" column
+SQL table schema is created for each CSV file, detailing data types, primary keys, foreign keys, and other constraints, compiled into crowdfunding_db_schema.sql.
 
-The "contact_id" column
+A PostgreSQL database, named crowdfunding_db, is set up to store the loaded data, with tables created as per the schema.
+Data from the CSV files is imported into the corresponding tables in the PostgreSQL database, with verification steps through SELECT statements to ensure data integrity.
 
-The "company_name" column
+Execution Steps:
 
-The "blurb" column, renamed to "description"
+The ETL scripts for data extraction and transformation are run in a Python environment, generating the structured CSV files.
+The PostgreSQL database is prepared, and the SQL schema script is executed to create the tables.
+CSV files are imported into the database, and data verification is performed to confirm successful data loading.
 
-The "goal" column, converted to the float data type
+Challenges and Considerations:
 
-The "pledged" column, converted to the float data type
+The project requires careful attention to data types and formats during the transformation process, ensuring compatibility with the database schema.
 
-The "outcome" column
+Handling null values and data inconsistencies are critical for maintaining data integrity.
 
-The "backers_count" column
+The project emphasizes the importance of a systematic approach to ETL processes, showcasing the practical application of Python and Pandas in data preparation and database management.
 
-The "country" column
-
-The "currency" column
-
-The "launched_at" column, renamed to "launch_date" and with the UTC times converted to the datetime format
-
-The "deadline" column, renamed to "end_date" and with the UTC times converted to the datetime format
-
-The "category_id" column, with unique identification numbers matching those in the "category_id" column of the category DataFrame
-
-The "subcategory_id" column, with the unique identification numbers matching those in the "subcategory_id" column of the subcategory DataFrame
-Export the campaign DataFrame as campaign.csv and save it to your GitHub repository.
-
-# Create the Contacts DataFrame
-Choose one of the following two options for extracting and transforming the data from the contacts.xlsx Excel data:
-
-Option 1: Use Python dictionary methods.
-
-Option 2: Use regular expressions.
-
-# Inspect the four CSV files, and then sketch an ERD of the tables by using QuickDBDLinks to an external site..
-
-Use the information from the ERD to create a table schema for each CSV file.
-
-Note: Remember to specify the data types, primary keys, foreign keys, and other constraints.
-
-Save the database schema as a Postgres file named crowdfunding_db_schema.sql, and save it to your GitHub repository.
-
-# Create a new Postgres database, named crowdfunding_db.
-
-Using the database schema, create the tables in the correct order to handle the foreign keys.
-
-Verify the table creation by running a SELECT statement for each table.
-
-Import each CSV file into its corresponding SQL table.
-
-Verify that each table has the correct data by running a SELECT statement for each.
-
-
+Overall, the Crowdfunding ETL Mini Project serves as a practical exercise in developing and executing an ETL pipeline, highlighting the essential steps from data extraction and transformation to database integration, fostering skills in data handling, Python programming, and database management.
